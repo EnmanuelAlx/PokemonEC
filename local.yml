@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: ./compose/local/Dockerfile
+    environment:
+      DATABASE_URL: "psql://postgres:postgres@db:5432/pokemonec"
+      PYTHONDONTWRITEBYTECODE: 1
+      PYTHONUNBUFFERED: 1
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    # command: /start
+
+  db:
+    image: postgres
+    volumes:
+      - shared_database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=pokemonec
+volumes:
+  shared_database:

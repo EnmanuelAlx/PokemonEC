@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: ./compose/local/Dockerfile
+    # environment:
+    #   MONGO_URL: "mongodb://db:27017/face-detector"
+    #   SECRET_KEY: "Friedrich Nietzsche"
+    #   PYTHON_APP: "http://python_app:5001"
+    #   PORT: 3000
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: /start
+
+  db:
+    image: postgres
+    volumes:
+      - shared_database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      
+volumes:
+  shared_database:
