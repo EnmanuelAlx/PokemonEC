@@ -57,6 +57,7 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     
+    'PokemonEC.pokeapi.apps.PokeapiConfig'
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
