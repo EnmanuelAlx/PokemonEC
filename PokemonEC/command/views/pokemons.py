@@ -37,7 +37,8 @@ def _create_chain(chain, prevolution, pokemons):
 def _create_pokemon(pokemon, prevolution=None):
     res = pokeapi.pokemon_stats(pokemon)
     data = res.json()
-    stats = data['stats'][:5]
+    num_stats = 6
+    stats = data['stats'][:num_stats]
     data['pokemon_id'] = data['id']
     serializer = PokemonModelSerializer(data=data)
     serializer.is_valid(raise_exception=True)

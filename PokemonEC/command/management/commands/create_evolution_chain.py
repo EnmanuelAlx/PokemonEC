@@ -20,6 +20,6 @@ class Command(BaseCommand):
         
         ec = pokemons.pokemon_evolution_chain(ec_id)
 
-        self.stdout.write("Evolution Chain created")
+        self.stdout.write("Chain of Evolutions created")
         return 
         

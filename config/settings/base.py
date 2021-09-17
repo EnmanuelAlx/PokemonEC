@@ -40,8 +40,6 @@ DATABASES = {
 # URLs
 ROOT_URLCONF = 'config.urls'
 
-# WSGI
-# WSGI_APPLICATION = 'config.wsgi.get_wsgi_application'
 
 # Apps
 DJANGO_APPS = [
@@ -50,6 +48,8 @@ DJANGO_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
+    
 ]
 
 THIRD_PARTY_APPS = [
@@ -58,7 +58,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     
     'PokemonEC.pokeapi.apps.PokeapiConfig',
-    'PokemonEC.command.apps.CommandConfig'
+    'PokemonEC.command.apps.CommandConfig',
+    'PokemonEC.evolution_chain_api.apps.EvolutionChainApiConfig'
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -113,5 +114,12 @@ ADMINS = [
     ("""Enmanuel Madrid""", 'EnmanuelAlx@gmail.com'),
 ]
 MANAGERS = ADMINS
+
+
+STATIC_ROOT = str(ROOT_DIR('staticfiles'))
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    str(APPS_DIR.path('static')),
+]
 
 

@@ -28,4 +28,7 @@ class Stat(models.Model):
     
     name  = models.CharField(max_length = 40, null=False, default='')
     base_stat = models.IntegerField(null=False, default=0)
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
+    pokemon = models.ForeignKey(Pokemon, 
+        on_delete=models.CASCADE, 
+        related_name='stats'
+    )
