@@ -13,4 +13,6 @@ def pokemon_evolution_chain(id):
 def pokemon_stats(pokemon_name):
     url = f"{BASE_URL}/pokemon/{pokemon_name}"
     res = requests.get(url)
-    return res
+    if res.status_code == 200:
+        return res
+    raise Exception('Error when obtaining PokeAPI data')

@@ -26,3 +26,5 @@ def test_get_charmander_height_weight():
     res = pokeapi.pokemon_stats(charmander)
     pokemon_data = res.json();
     assert pokemon_data['id'] == 5
+    
+
